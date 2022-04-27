@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author JLG
  */
 @RestController
-public class ControllerAuth {
+public class ControllerAuthLoguin {
     
     
     

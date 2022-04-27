@@ -41,7 +41,7 @@ public class ControllerExperiencia {
     }
     
     @PostMapping("/nueva")
-    public ExperienciaModel nuevaExperiencia(@Validated @RequestBody ExperienciaModel experiencia) {
+    public ExperienciaModel nuevaExperiencia(@RequestBody ExperienciaModel experiencia) {
         return expeServ.guardar(experiencia);
     }
     
