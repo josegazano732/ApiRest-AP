@@ -46,7 +46,7 @@ public class ControllerExperiencia {
     }
     
     @PutMapping("/actualizar/{id}") //put facil
-    public ExperienciaModel actualizarExperiencia(@Validated @RequestBody ExperienciaModel experiencia) {
+    public ExperienciaModel actualizarExperiencia(@RequestBody ExperienciaModel experiencia) {
         return expeServ.guardar(experiencia);
     }
     
