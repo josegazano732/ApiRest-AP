@@ -30,7 +30,6 @@ public class Controller {
     
     @GetMapping
     public List<PersonaModel> verPersonas() {
-        //return ListaPersonas;
         return persoServ.verPersonas();
     }
     
