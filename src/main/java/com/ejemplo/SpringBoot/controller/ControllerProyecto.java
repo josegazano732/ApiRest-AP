@@ -9,6 +9,7 @@ import com.ejemplo.SpringBoot.service.ProyectoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,22 +38,25 @@ public class ControllerProyecto {
         //return ListaPersonas;
         return proyecServ.verProyecto();
     }
-    
+    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @GetMapping("/{id}")
     public ResponseEntity<ProyectoModel> ProyectoId(@PathVariable(value = "id") Long id) {
         return proyecServ.proyectoId(id);
     }
     
+    @Secured("ROLE_ADMIN")
     @PostMapping("/nueva")
     public ProyectoModel nuevaProyecto(@RequestBody ProyectoModel proyecto) {
         return proyecServ.guardar(proyecto);
     }
     
-     @PutMapping("/actualizar/{id}") //put facil
+    @Secured("ROLE_ADMIN")
+    @PutMapping("/actualizar/{id}") //put facil
     public ProyectoModel actualizarProyecto(@RequestBody ProyectoModel proyecto) {
         return proyecServ.guardar(proyecto);
     }
     
+    @Secured("ROLE_ADMIN")
     @PutMapping("/modificar/{id}") //put dificil
     public ResponseEntity<ProyectoModel> actualizarProyectoDos(@PathVariable(value = "id") long id, @Validated @RequestBody ProyectoModel proyecto) {
         if (id == proyecto.getId()) {
@@ -63,6 +67,7 @@ public class ControllerProyecto {
         }
     }
     
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("borrar/{id}")
     public void borrarProyecto(@PathVariable long id){
         proyecServ.borrarProyecto(id);

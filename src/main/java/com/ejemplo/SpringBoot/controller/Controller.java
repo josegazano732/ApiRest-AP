@@ -8,6 +8,7 @@ import com.ejemplo.SpringBoot.service.PersonaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,23 +33,24 @@ public class Controller {
     public List<PersonaModel> verPersonas() {
         return persoServ.verPersonas();
     }
-    
+    @Secured({"ROLE_ADMIN","ROLE_USER"})
     @GetMapping("/{id}")
     public ResponseEntity<PersonaModel> PersonasId(@PathVariable(value = "id") int id) {
         return persoServ.personasId(id);
     }
     
+    @Secured("ROLE_ADMIN")
     @PostMapping("/nueva")
     public PersonaModel nuevaPersona(@Validated @RequestBody PersonaModel persona) {
         return persoServ.guardar(persona);
     }
-    
+    @Secured("ROLE_ADMIN")
     @PutMapping("/actualizar/{id}") //put facil
     public PersonaModel actualizarPersona(@Validated @RequestBody PersonaModel persona) {
         return persoServ.guardar(persona);
     }
 
-
+    @Secured("ROLE_ADMIN")
     @PutMapping("/modificar/{id}") //put dificil
     public ResponseEntity<PersonaModel> actualizarPersDificil(@PathVariable(value = "id") int id, @Validated @RequestBody PersonaModel persona) {
         if (id == persona.id()) {
@@ -58,7 +60,7 @@ public class Controller {
             return ResponseEntity.badRequest().build();
         }
     }
-    
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("borrar/{id}")
     public void borrarPersona(@PathVariable int id){
         persoServ.borrarPersona(id);
