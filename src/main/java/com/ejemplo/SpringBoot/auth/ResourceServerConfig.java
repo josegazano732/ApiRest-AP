@@ -2,6 +2,8 @@
 package com.ejemplo.SpringBoot.auth;
 
 import java.util.Arrays;
+import java.util.Collections;
+
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +40,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
     @Bean
     public CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("https://ap-jlg.firebaseapp.com"));
+        config.setAllowedOrigins(Collections.singletonList("https://ap-jlg.firebaseapp.com"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowCredentials(true);
         config.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
