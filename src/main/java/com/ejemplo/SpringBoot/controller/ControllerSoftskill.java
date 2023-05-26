@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author JLG
  */
-@CrossOrigin(origins = { "https://ap-jlg.web.app"})
+@CrossOrigin(origins = { "https://ap-jlg.web.app/"})
 @RestController
 @RequestMapping("api/softskill")
 public class ControllerSoftskill {
