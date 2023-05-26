@@ -25,9 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author JLG
  */
-@CrossOrigin(origins = { "https://ap-jlg.web.app" })
+@CrossOrigin(origins = { "https://ap-jlg.firebaseapp.com" })
 @RestController
-@RequestMapping("api/proyecto")
+@RequestMapping("/api/proyecto")
 public class ControllerProyecto {
     
     @Autowired

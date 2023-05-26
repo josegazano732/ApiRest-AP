@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author JLG
  */
-@CrossOrigin(origins = { "https://ap-jlg.web.app/"})
+@CrossOrigin(origins = { "https://ap-jlg.firebaseapp.com"})
 @RestController
-@RequestMapping("api/softskill")
+@RequestMapping("/api/softskill")
 public class ControllerSoftskill {
     
     @Autowired
